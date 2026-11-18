@@ -1,0 +1,21 @@
+{
+  "name": "ratchet",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "RATCHET: a self-tightening constitution for GenLayer (GenVM v0.2.16)",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test:scripts": "node --test scripts/test/*.test.mjs",
+    "e2e": "node scripts/e2e.mjs",
+    "e2e:sim": "node scripts/e2e.mjs --sim",
+    "e2e:chaos": "node scripts/e2e.mjs --sim --chaos",
+    "keys": "node scripts/keys.mjs",
+    "keys:fund": "node scripts/keys.mjs --fund"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8"
+  }
+}

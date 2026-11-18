@@ -1,0 +1,11 @@
+.venv/
+node_modules/
+.genvmroot/
+.pytest_cache/
+__pycache__/
+artifacts/
+.e2e/
+.env
+*.pyc
+reports/e2e-*.json
+reports/e2e-*.md
