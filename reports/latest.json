@@ -1,0 +1,2302 @@
+{
+  "meta": {
+    "mode": "live",
+    "network": "https://studio.genlayer.com/api",
+    "sourceSha256": "85d7c39d2c526ea02d0e9a947dfae7a336414d78f59aaa9740fd355c5318bc4a",
+    "address": "0x75C663cA2E0E0272C5b3548a22fc414b801bE59e"
+  },
+  "seconds": 5072,
+  "counts": {
+    "passed": 250,
+    "failed": 6,
+    "warnings": 4,
+    "total": 260
+  },
+  "checks": [
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "F0 0x40bc61db5f6d5b9f477392e5a4e331d863b5bf32 holds 0.33 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "F1 0x60a8f93344c7725e4feef0226df6dc4fb4560b4b holds 0.24 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "F2 0x2d5e906c23179edc648a3383ce6b7f819afdad4a holds 0.234 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "F3 0x00139845b1ac602480dea847f5996209c8ebbf7d holds 0.22 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "F4 0xae6914ee672d0618c0658150f06890cd084145c3 holds 0.22 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "O 0x30a7edcd27823851fd0d2a541146928c14f7f615 holds 0.22 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "G 0xfc5007f9fba5053515eb37492aef7e3154f7bcd8 holds 0.22 GEN",
+      "status": "PASS",
+      "detail": "fund this address from the Studionet faucet (needs >= 0.2 GEN) and re-run"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "deployment accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "deployed contract address found in the receipt",
+      "status": "PASS",
+      "detail": "{\"hash\":\"0x03f3aba9e65a3ea7c8802caf7ee3fff6cad9b2d341a6fd75edf667cc3f3696bd\",\"from_address\":\"0x40BC61Db5f6D5b9f477392e5A4e331D863B5bF32\",\"to_address\":\"0x75C663cA2E0E0272C5b3548a22fc414b801bE59e\",\"data\":{\"calldata\":{\"readable\":\"{\\\"args\\\":[\\\"Ratchet E2E Assembly\\\",[\\\"0x40bc61db5f6d5b9f477392e5a4e331d8"
+    },
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "name": "deployed source is byte-identical to contracts/Ratchet.py",
+      "status": "PASS",
+      "detail": "sha256 deployed=85d7c39d2c526ea0 repo=85d7c39d2c526ea0"
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "name, bond and windows were stored",
+      "status": "PASS",
+      "detail": "{\"article_count\":4,\"bond\":\"4000000000000000\",\"challenge_minutes\":2,\"charter_version\":1,\"floor_motion\":0,\"member_count\":5,\"members\":[\"0x00139845b1ac602480dea847f5996209c8ebbf7d\",\"0x2d5e906c23179edc648a"
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "roster equals the five founders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "four articles, no motions, floor free",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "charter tiers are 1,4,3,2 for A1..A4",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "threshold ladder for 5 members is 3,4,4,5",
+      "status": "PASS",
+      "detail": "[3,4,4,5]"
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "baseline: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=0 books=0"
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "baseline: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=0 chain=0"
+    },
+    {
+      "section": "S0  Baseline reads",
+      "name": "baseline: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=0"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "file_amendment by O reverts",
+      "status": "PASS",
+      "detail": "EXEC_ERROR rollback members only"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "  revert reason mentions \"members only\"",
+      "status": "PASS",
+      "detail": "rollback members only"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "file_amendment by F1 reverts",
+      "status": "PASS",
+      "detail": "EXEC_ERROR rollback attach exactly the bond"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "  revert reason mentions \"attach exactly the bond\"",
+      "status": "PASS",
+      "detail": "rollback attach exactly the bond"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "file_amendment by F1 reverts",
+      "status": "PASS",
+      "detail": "EXEC_ERROR rollback article id must be 1-12 chars of A-Z, 0-9, _ starting with a letter"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "  revert reason mentions \"article id must be\"",
+      "status": "PASS",
+      "detail": "rollback article id must be 1-12 chars of A-Z, 0-9, _ starting with a letter"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "classify by F2 reverts",
+      "status": "PASS",
+      "detail": "EXEC_ERROR rollback motion not found"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "  revert reason mentions \"motion not found\"",
+      "status": "PASS",
+      "detail": "rollback motion not found"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "no motion was created by the failed attempts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "name": "failed transactions did not leave value in the contract",
+      "status": "WARN",
+      "detail": "contract holds 12000000000000001 wei"
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "donation accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "treasury holds the donation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "F1 files a motion",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "motion 1 is FILED with a frozen five-member roster and four-article snapshot",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "F1 withdraws it before classification",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "motion 1 is WITHDRAWN and its bond is claimable",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "the floor is free again",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "after S2: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=46000000000000001 books=34000000000000000"
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "after S2: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=46000000000000001 chain=46000000000000001"
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "name": "after S2: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=4000000000000000"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 files the adoption",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F2 classifies (validators must reproduce the booleans exactly)",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "motion is VOTING",
+      "status": "PASS",
+      "detail": "VOTING"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "vote window is exactly the configured two minutes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "S3: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\"]"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "S3: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "S3: tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "S3: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "AI expectation: an unrelated archive article touches nothing (tier 1)",
+      "status": "PASS",
+      "detail": "touched= tier=1"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F0 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F2 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F3 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F4 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "close_vote (everyone voted)",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "motion is CONTESTABLE with a two-minute challenge window",
+      "status": "PASS",
+      "detail": "CONTESTABLE"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "finalize after the window",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "motion is ENACTED",
+      "status": "PASS",
+      "detail": "ENACTED"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "ARCHIVE is in the charter and the version advanced",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "both of F1's bonds are claimable (2 x bond)",
+      "status": "PASS",
+      "detail": "8000000000000000"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after S3: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=50000000000000001 books=38000000000000000"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after S3: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=50000000000000001 chain=50000000000000001"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after S3: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=8000000000000000"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 payout: ledger owes exactly 0.008 GEN",
+      "status": "PASS",
+      "detail": "8000000000000000"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 payout: withdraw accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 payout: ledger zeroed immediately",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 payout: withdraw transaction finalized",
+      "status": "PASS",
+      "detail": "FINALIZED"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "F1 payout: payout arrived (0.008 GEN)",
+      "status": "WARN",
+      "detail": "delta=0 expected=8000000000000000; the final reconciliation re-checks every balance"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after F1 payout: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=42000000000000001 books=30000000000000000"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after F1 payout: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=42000000000000001 chain=42000000000000001"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after F1 payout: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=0"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "name": "after F1 payout: books fully settled (balance == treasury + escrow + claimable)",
+      "status": "PASS",
+      "detail": "balance=42000000000000001 books=30000000000000000 (emitted transfers execute at finalization)"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F2 files a replacement of A1 that names A3",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F3 classifies",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "S4: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "S4: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "S4: tier = max(floor, touched tiers) = 3",
+      "status": "PASS",
+      "detail": "stored tier 3"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "S4: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "AI expectation: the strict reading flags the explicitly suspended A3 (tier 3)",
+      "status": "PASS",
+      "detail": "touched=A3 tier=3"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "stored votes_needed equals the on-chain threshold for tier 3 (4)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F0 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F1 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F2 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F3 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "F4 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "close_vote",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "3 yes votes are one short of 4: the motion is REJECTED",
+      "status": "PASS",
+      "detail": "REJECTED yes=3"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "a rejected motion returns the proposer's bond",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "the charter is unchanged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "after S4: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=46000000000000001 books=34000000000000000"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "after S4: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=46000000000000001 chain=46000000000000001"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "name": "after S4: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=4000000000000000"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F1 files \"TREASURER\"",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F2 classifies (STRICT reading)",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "S5 initial: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "S5 initial: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "S5 initial: tier = max(floor, touched tiers) = 3",
+      "status": "PASS",
+      "detail": "stored tier 3"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "S5 initial: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F0 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F1 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F2 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F3 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "F4 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "close_vote",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "S5: motion ended consistently with its tier",
+      "status": "PASS",
+      "detail": "REJECTED"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "after S5: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=50000000000000001 books=38000000000000000"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "after S5: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=50000000000000001 chain=50000000000000001"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "name": "after S5: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=8000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F2 files \"ALBUM\"",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F3 classifies (STRICT reading)",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b initial: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b initial: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b initial: tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b initial: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F0 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F1 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F2 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F3 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F4 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "close_vote",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "F4 challenges (INCLUSIVE reading, bond attached)",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b: exactly one challenge is recorded, by the challenger",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "AI expectation: an unrelated photo album touches no article under either reading",
+      "status": "PASS",
+      "detail": "raised=false"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b ratchet: no article that was touched before became untouched",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b ratchet: the tier never went down",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b: raised flag equals (tier after > tier before)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b upheld: the proposer is compensated with half the challenger bond",
+      "status": "PASS",
+      "detail": "2000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b upheld: the other half goes to the commons",
+      "status": "PASS",
+      "detail": "2000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b upheld: the challenger is not refunded",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=58000000000000001 books=46000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=58000000000000001 chain=58000000000000001"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b after challenge: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=10000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "finalize right after the challenge (no waiting)",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b: 4 yes votes vs 3 needed at tier 1: motion is ENACTED",
+      "status": "PASS",
+      "detail": "ENACTED"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "S5b: proposer bond routing after settlement",
+      "status": "PASS",
+      "detail": "6000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "after S5b: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=58000000000000001 books=46000000000000000"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "after S5b: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=58000000000000001 chain=58000000000000001"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "name": "after S5b: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=14000000000000000"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F3 files a grant to G",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "a grant of at most 10% of the treasury has floor tier 1",
+      "status": "PASS",
+      "detail": "floor 1"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F4 classifies",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "S6: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ALBUM\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "S6: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "S6: tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "S6: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "AI expectation: paying a hall rental touches nothing",
+      "status": "PASS",
+      "detail": "touched="
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F0 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F1 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F2 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F3 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "F4 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "close_vote",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "finalize",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "grant motion is ENACTED",
+      "status": "PASS",
+      "detail": "ENACTED"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "treasury paid out exactly the grant",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "G is owed exactly the grant",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after grant: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=62000000000000001 books=50000000000000000"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after grant: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=62000000000000001 chain=62000000000000001"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after grant: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=19000000000000000"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "G payout: ledger owes exactly 0.001 GEN",
+      "status": "PASS",
+      "detail": "1000000000000000"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "G payout: withdraw accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "G payout: ledger zeroed immediately",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "G payout: withdraw transaction finalized",
+      "status": "PASS",
+      "detail": "FINALIZED"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "G payout: payout arrived (0.001 GEN)",
+      "status": "WARN",
+      "detail": "delta=0 expected=1000000000000000; the final reconciliation re-checks every balance"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after G payout: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=61000000000000001 books=49000000000000000"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after G payout: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=61000000000000001 chain=61000000000000001"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after G payout: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=18000000000000000"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "name": "after G payout: books fully settled (balance == treasury + escrow + claimable)",
+      "status": "PASS",
+      "detail": "balance=61000000000000001 books=49000000000000000 (emitted transfers execute at finalization)"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F0 proposes to admit O",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "admission has floor tier 2",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F1 classifies",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "S7: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ALBUM\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "S7: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "S7: tier = max(floor, touched tiers) = 2",
+      "status": "PASS",
+      "detail": "stored tier 2"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "S7: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F0 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F1 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F2 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F3 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "F4 vote accepted",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "close_vote",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "finalize",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "admission is ENACTED",
+      "status": "PASS",
+      "detail": "ENACTED"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "the roster now has six members including O",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "O, now a member, can file a motion",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "O withdraws it",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "after S7: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=69000000000000001 books=57000000000000000"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "after S7: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=69000000000000001 chain=69000000000000001"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "name": "after S7: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=26000000000000000"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "F2 files",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "F3 classifies",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "S8: stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ALBUM\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "S8: every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "S8: tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "S8: reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "close_vote after the deadline",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "motion LAPSED",
+      "status": "PASS",
+      "detail": "LAPSED"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "its bond went to the treasury",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "the floor is free again",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "after S8: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=73000000000000001 books=61000000000000000"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "after S8: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=73000000000000001 chain=73000000000000001"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "name": "after S8: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=26000000000000000"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "every motion is in a final state",
+      "status": "PASS",
+      "detail": "[\"WITHDRAWN\",\"ENACTED\",\"REJECTED\",\"REJECTED\",\"ENACTED\",\"ENACTED\",\"ENACTED\",\"WITHDRAWN\",\"LAPSED\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "the floor is free and escrow is empty",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "stats.filed equals the number of motions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "stats.enacted / rejected / lapsed / void match the records",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "challenge counters match the records",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 2 (AMEND/ENACTED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 2 (AMEND/ENACTED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 2 (AMEND/ENACTED): tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 2 (AMEND/ENACTED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 3 (AMEND/REJECTED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 3 (AMEND/REJECTED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 3 (AMEND/REJECTED): tier = max(floor, touched tiers) = 3",
+      "status": "PASS",
+      "detail": "stored tier 3"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 3 (AMEND/REJECTED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 4 (AMEND/REJECTED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 4 (AMEND/REJECTED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 4 (AMEND/REJECTED): tier = max(floor, touched tiers) = 3",
+      "status": "PASS",
+      "detail": "stored tier 3"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 4 (AMEND/REJECTED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 5 (AMEND/ENACTED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 5 (AMEND/ENACTED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 5 (AMEND/ENACTED): tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 5 (AMEND/ENACTED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 6 (GRANT/ENACTED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ALBUM\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 6 (GRANT/ENACTED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 6 (GRANT/ENACTED): tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 6 (GRANT/ENACTED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 7 (ADMIT/ENACTED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ALBUM\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 7 (ADMIT/ENACTED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 7 (ADMIT/ENACTED): tier = max(floor, touched tiers) = 2",
+      "status": "PASS",
+      "detail": "stored tier 2"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 7 (ADMIT/ENACTED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 9 (AMEND/LAPSED): stored touches cover exactly the other articles",
+      "status": "PASS",
+      "detail": "[\"A1\",\"A2\",\"A3\",\"A4\",\"ALBUM\",\"ARCHIVE\"]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 9 (AMEND/LAPSED): every stored touch is a real boolean",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 9 (AMEND/LAPSED): tier = max(floor, touched tiers) = 1",
+      "status": "PASS",
+      "detail": "stored tier 1"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "motion 9 (AMEND/LAPSED): reason is stored as free text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "no final motion still holds a bond",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "every ENACTED/REJECTED motion obeys its threshold exactly (yes >= votes_needed <=> ENACTED)",
+      "status": "PASS",
+      "detail": "[[2,\"ENACTED\",5,3],[3,\"REJECTED\",3,4],[4,\"REJECTED\",3,4],[5,\"ENACTED\",4,3],[6,\"ENACTED\",5,3],[7,\"ENACTED\",5,4]]"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "every LAPSED motion had less than half the roster voting",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "F0 withdraws 0.004 GEN",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "F1 withdraws 0.004 GEN",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "F2 withdraws 0.01 GEN",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "F3 withdraws 0.004 GEN",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "O withdraws 0.004 GEN",
+      "status": "PASS",
+      "detail": "OK "
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "final (ledger side): contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=65000000000000001 books=35000000000000000"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "final (ledger side): ledger balance equals the chain balance",
+      "status": "FAIL",
+      "detail": "ledger=65000000000000001 chain=55000000000000001"
+    },
+    {
+      "section": "Final reconciliation",
+      "name": "final (ledger side): pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=0"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "F0: balance equals start - attached + withdrawn",
+      "status": "FAIL",
+      "detail": "actual=326000000000000000 expected=330000000000000000 diff=-4000000000000000 (a payout may still be in flight: increase --settle-minutes)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "F1: balance equals start - attached + withdrawn",
+      "status": "FAIL",
+      "detail": "actual=219999999999999997 expected=227999999999999997 diff=-8000000000000000 (a payout may still be in flight: increase --settle-minutes)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "F2: balance equals start - attached + withdrawn",
+      "status": "FAIL",
+      "detail": "actual=192000000000000000 expected=202000000000000000 diff=-10000000000000000 (a payout may still be in flight: increase --settle-minutes)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "F3: balance equals start - attached + withdrawn",
+      "status": "FAIL",
+      "detail": "actual=216000000000000000 expected=220000000000000000 diff=-4000000000000000 (a payout may still be in flight: increase --settle-minutes)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "F4: balance equals start - attached + withdrawn (exact)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "O: balance equals start - attached + withdrawn",
+      "status": "FAIL",
+      "detail": "actual=212000000000000000 expected=220000000000000000 diff=-8000000000000000 (a payout may still be in flight: increase --settle-minutes)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "G: balance is 1000000000000000 wei below expectation (network fees?)",
+      "status": "WARN",
+      "detail": "diff=-1000000000000000"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "final: contract is solvent (balance >= books)",
+      "status": "PASS",
+      "detail": "balance=47000000000000001 books=35000000000000000"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "final: ledger balance equals the chain balance",
+      "status": "PASS",
+      "detail": "ledger=47000000000000001 chain=47000000000000001"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "final: pull-payment total equals the sum of member balances",
+      "status": "PASS",
+      "detail": "total=0"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "final: books fully settled (balance == treasury + escrow + claimable)",
+      "status": "PASS",
+      "detail": "balance=47000000000000001 books=35000000000000000 (emitted transfers execute at finalization)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "name": "after every payout the contract holds exactly the commons treasury",
+      "status": "PASS",
+      "detail": "balance=47000000000000001 treasury=35000000000000000 claimable=0"
+    }
+  ],
+  "transactions": [
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "label": "F0.deploy",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x03f3aba9e65a3ea7c8802caf7ee3fff6cad9b2d341a6fd75edf667cc3f3696bd",
+      "attempt": 1,
+      "seconds": 10
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "label": "O.file_amendment (must revert)",
+      "ok": false,
+      "kind": "EXEC_ERROR",
+      "hash": "0x1e6524a82098f439805572e079c82833017b5e4e0aa93146058ad6e68c1183a3",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "label": "F1.file_amendment (must revert)",
+      "ok": false,
+      "kind": "EXEC_ERROR",
+      "hash": "0xdc419f2f19cde47d162caf6bacc2f6b2c42c511f3f7b730f31ff1537d0cda40b",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "label": "F1.file_amendment (must revert)",
+      "ok": false,
+      "kind": "EXEC_ERROR",
+      "hash": "0x98075b57e0fd01c953326176a545cd2ee55aaae9f9ec107ea51cb314014b6958",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "label": "F2.classify (must revert)",
+      "ok": false,
+      "kind": "EXEC_ERROR",
+      "hash": "0x818cca78bfdcd7eacc9997342940571f7834f4e2513745414af52b81e0962382",
+      "attempt": 1,
+      "seconds": 8
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "label": "F2.donate",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xedcfb970f61d96135cbec1fd1c08b331bc44f3d14b14f086e002333cbb4c859f",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "label": "F1.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x5c120401de1589ac147a976a36f2d7c3450a90119bb811229973405c5dd77569",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S2  Treasury donation and bond withdrawal",
+      "label": "F1.withdraw_motion",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xabc7b37c4255de809e9088aca235792cec99bcfee83f32cefb28f433f2108f5a",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F1.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x8d0eb53f10050ef926385525a93a88d7f87603708ff7423a7ad919786aee7e2b",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F2.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xd408423088822ed9a2666fdb8ee4de61033f41e69a600bc40cf7287c26abe0f5",
+      "attempt": 1,
+      "seconds": 20
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F0.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xdf44bb05119f70af7b6f9f32a075a279e2e3e1d825bfd4801f15a305e0bd6e0a",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F1.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x64a8f77829c79f1b06091b48be223f4e0da87aa1c32a7915031526184efa74a5",
+      "attempt": 1,
+      "seconds": 14
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F2.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x1df22cdecea5704342e8a8b9c48e473428feacc2ab26a135a7578256a4e6d10f",
+      "attempt": 1,
+      "seconds": 17
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F3.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x5627af5fea8e4e4038b238a0c9261daca0778580e46ad91b0b17e973fb86bbf0",
+      "attempt": 1,
+      "seconds": 24
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F4.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x52e02dc07ae9873cb998f88965d3d3df0a4d19e8c77c88b3032f9e80b541f975",
+      "attempt": 1,
+      "seconds": 27
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F3.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xa0931524bc7f2fd436a6db5c16bc7e0d097b9043548062930ad59e1ece664ea6",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F4.finalize",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x086c52219ebc39320262772c5e7e9901883212c2e1a1e8f6639da04b61946a7f",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "label": "F1.withdraw",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x7dc744600119871232d19765616b4ae43a9cc11d2dd873f79f9bb3056db8c08e",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F2.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x62267c46b410e80a196f19fee7e52d53e799834891bc390146ba106216ecb186",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F3.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x60573a2c33f221a10ce08d05936b3dd83485153645d3b111f64cb6abad345795",
+      "attempt": 1,
+      "seconds": 32
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F0.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xa9696ed5f2268eb806d3f4d18e865b9b9ddde9a63882694ef6d86cc277307320",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F1.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x72a0e9cd0287e44a958510f283276728eafffbc190d11637e99e89aa94518ae9",
+      "attempt": 1,
+      "seconds": 14
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F2.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x8712094e3f485f8ab1474699993b095e53f8dfc0233a6f453cd5fd20181519aa",
+      "attempt": 1,
+      "seconds": 17
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F3.vote(no)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x58361d0ef81a74f712f31442910c409ee4b31c18412b56dcde9a8ad46d237b54",
+      "attempt": 1,
+      "seconds": 20
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F4.vote(no)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x11700e9994f8fa10b088d183acf41bd2392c0bdaeb76892efa09d35820b848d9",
+      "attempt": 1,
+      "seconds": 23
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "label": "F0.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xb704a33680df940c3ee83980c8e74070965209d1ec728ae10c9e70e4bb785188",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F1.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x2f0f7d3c7f72a765bf969530e657a2583fcbd3f4559af80b2f39b4bceebe1e99",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F2.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x78eae317d8a09aa264cec07470ba14423666bcc573619a610313e0035ecbf371",
+      "attempt": 1,
+      "seconds": 20
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F0.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x5ed31ad5fb8c91df0ef3f214b73b15783d3a411d2496535dfba593f2932f13d5",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F1.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xf5711426ff8ab8b882d965ad1271b17afe3a39c681762890402e936beb6c59ed",
+      "attempt": 1,
+      "seconds": 14
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F2.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x471c09f7c6394aeaa96cb6a510ee6bc3516fc2c5ced15c9654ecbb4c4e47b8e7",
+      "attempt": 1,
+      "seconds": 17
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F3.vote(no)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xa7cc1b8d5789bad3b4bdce704ab963a0abddc5cd2e6faa178409c93772a45b8c",
+      "attempt": 1,
+      "seconds": 20
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F4.vote(no)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xbef5d00f59c5b51eee2f6318f0a193f06b45c6679b92a47b91e839c29b81d583",
+      "attempt": 1,
+      "seconds": 27
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "label": "F2.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xced5e4e0e0eae192bd70b2f9603acea0999a191afc7ec20b8d60a49c6c6425eb",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F2.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xc5d9c1bf4b4bd1f7a40e468464e0dd4e1d337444ea32a07eb0f9abc3aa8b6191",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F3.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x7a83bb2448f08314f137705f87dbb1ce9a493a3179fa1f2d86f199dd2eb4e6c3",
+      "attempt": 1,
+      "seconds": 24
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F0.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x7f47dca1add0415b5f8b77fa9907a66b8fddc3c156373e333fde72154156d864",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F1.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xa70e12e83d32349fc7ccdd9bf20aa7e3564bd77dc13078f65948c3fde608e9a8",
+      "attempt": 1,
+      "seconds": 14
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F2.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x6f5479cd294e29406d2467d6f02ed4c997cc9e4e7c673077e0b8e4b3450a37fa",
+      "attempt": 1,
+      "seconds": 17
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F3.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x6128e5593f22eb65fca538ac0783c361edd440a2180127e5eac38873d2b0175c",
+      "attempt": 1,
+      "seconds": 19
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F4.vote(no)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x7065c939d4b4c7d9867536fa2579eec6324961d0f90fb6ec7f09e973a3da5cdb",
+      "attempt": 1,
+      "seconds": 22
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F3.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x9bb5923636ce679b4c08c666ddafbd09c8eb410ff159d7935d7ca4c5582d9c88",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F4.challenge",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x58acc8bf4940b3d14e7c1e8f86317de9fb9d6a8d48dd4c0f278b3be39566f539",
+      "attempt": 1,
+      "seconds": 24
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "label": "F0.finalize",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x87fcaebd07ac4242ec157b7c9b9347e2b30762ae1ca843f839d6f597a2603f69",
+      "attempt": 1,
+      "seconds": 12
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F3.file_grant",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x61e37f68812016a617b9385642eb14dd93d7920ff9b9f4cb1c6c35f23127b024",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F4.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x9a40e7ae365df6e931b09513529479b0069bcd5bbcd5d43419c11a358d0ca82b",
+      "attempt": 1,
+      "seconds": 15
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F0.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x1e043c58ea61032ce30ff0275dda3faada856f57826ad336fc404cef99c945a4",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F1.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x5a5b17340460849ab97a68fd80c767e4741454c720a6a09214652776c4bfeaa4",
+      "attempt": 1,
+      "seconds": 14
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F2.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x73a3b13c3b94bf24f7d3db06ed86b72976e5bfad5908451c9a90ded25264fe6d",
+      "attempt": 1,
+      "seconds": 17
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F3.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x71cdec9a0c9d1210026dd34d4bf3476368a249688a72b59aa21f67921a27c441",
+      "attempt": 1,
+      "seconds": 20
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F4.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x8bb173ce45f1e8e4c6746f6dc2fe3de2ec99bd7ac16f75613d34d056637c4738",
+      "attempt": 1,
+      "seconds": 23
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F0.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x2c7dbc52ab92d7e570bd16aae978ce283c621e46ab6b6fedfeb423d613b27a51",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "F1.finalize",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xce0c1eba8ea1ca14c716d25ae6fae83bdfaeb6642c0052619488c6c332cd0a76",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "label": "G.withdraw",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x797bb955669aae3d01f630a4dfd883231ee77a309f01b8e9ee55a3b52f658c18",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F0.file_admission",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xd3790da02b799492e707433e16b1bff21f225065bc5ff6dfb2939f1d196a72ca",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F1.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x205654847efe286d15570b4754393ca97f37a5129071036ee6589dd1c8a53d17",
+      "attempt": 1,
+      "seconds": 15
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F0.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xaea5618e9300118b4ccf9c795db7a54a5ae6fdb3765779ed6996f50286410924",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F1.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xce6fd8377ea82e534cba6292ee0a22d86156a003e1bdecfed876c4bf82db7d76",
+      "attempt": 1,
+      "seconds": 14
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F2.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xce8879643f3f65b231faca7a79051c244d18ceb59f7d02da37fe7138cb05913f",
+      "attempt": 1,
+      "seconds": 17
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F3.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x0f79ee2edad1ff399cbb5593542712d70c486e26c1a6430a730b5b654a4d483b",
+      "attempt": 1,
+      "seconds": 20
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F4.vote(yes)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xa962f1867242ba9562bc751fb5531e80a8122f115e8c37171256c6f11704cbde",
+      "attempt": 1,
+      "seconds": 23
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F2.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x578c623fe65e79bf95b814a9ca0d21f8376e7a62c182d736fd7f4a8db540e3a6",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "F3.finalize",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x2794d9ee329c4a16681402a9bb9b236d549f89adec29e0116697dd9923d3b390",
+      "attempt": 1,
+      "seconds": 10
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "O.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x7ba989546121711abb733125d8ed74d86256f07d21bd52981a502a7c881e7b07",
+      "attempt": 1,
+      "seconds": 8
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "label": "O.withdraw_motion",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x97832694c7e48dafdfcc19283ab110ebeed4b779b8f16aec0fd921472914ef92",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "label": "F2.file_amendment",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x20dadcc6217f206a0e398c49ed3582ea14fed73667600ec1ae5777eaf747aa0d",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "label": "F3.classify",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xba0f028e97fdc2c60efa51cdc65d30772f34b58e7708cf31c92d7b3f07796512",
+      "attempt": 1,
+      "seconds": 28
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "label": "F4.close_vote",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x38cb7c07243451354f822d0898c34d33942a8957ad3d013c0cd3d6ce67ed7676",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "Final reconciliation",
+      "label": "F0.withdraw (cleanup)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0xcfb3544baf2ecf706b84cbfc93651a227be82234dee86f1c6e58b1f2df5afeed",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "Final reconciliation",
+      "label": "F1.withdraw (cleanup)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x65fa1077589123740788dc3450f1a032a06dd3d1914de7cad063dd62ccc8a642",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "Final reconciliation",
+      "label": "F2.withdraw (cleanup)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x9b373069c2a332b0830065a04516fc68692dbcfe21742696f8ba0f47be623500",
+      "attempt": 1,
+      "seconds": 7
+    },
+    {
+      "section": "Final reconciliation",
+      "label": "F3.withdraw (cleanup)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x8fa917b499fa1a07f7694ee93e2edcfd0fe6000d719a9db180647ecdfb737888",
+      "attempt": 1,
+      "seconds": 11
+    },
+    {
+      "section": "Final reconciliation",
+      "label": "O.withdraw (cleanup)",
+      "ok": true,
+      "kind": "OK",
+      "hash": "0x9577b7511897b7948bb762a99c4721b5848c151c28f610c8249ae9137af88571",
+      "attempt": 1,
+      "seconds": 7
+    }
+  ],
+  "notes": [
+    {
+      "section": "Setup: accounts, funding, deployment",
+      "text": "contract 0x75C663cA2E0E0272C5b3548a22fc414b801bE59e"
+    },
+    {
+      "section": "S1  Guards (each of these transactions must revert and move no money)",
+      "text": "Studionet kept 12000000000000001 wei from reverted transactions; later balance checks subtract this baseline"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "text": "AI (strict) touched [] -> tier 1"
+    },
+    {
+      "section": "S3  Happy path: adopt an article (AI strict reading, unanimous vote)",
+      "text": "waiting for chain time 1794995535 (challenge window)"
+    },
+    {
+      "section": "S4  Threshold boundary with an AI-derived tier",
+      "text": "AI (strict) touched [A3] -> tier 3"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "text": "AI (strict) touched [A3] -> tier 3"
+    },
+    {
+      "section": "S5  The ratchet: challenging a strict reading (stealth motion)",
+      "text": "S5: the strict reading already required tier 3; the motion ended REJECTED and the challenge path is not exercised here"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "text": "AI (strict) touched [] -> tier 1"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "text": "AI (inclusive) touched []: tier 1 => 1; challenge was UPHELD (tier unchanged)"
+    },
+    {
+      "section": "S5b  A challenge that fails: the challenger forfeits half the bond",
+      "text": "S5b challenge game: upheld, motion ENACTED"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "text": "AI (strict) touched [] -> tier 1"
+    },
+    {
+      "section": "S6  Treasury grant (size raises the floor tier) and payout",
+      "text": "waiting for chain time 1794996946 (challenge window)"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "text": "AI (strict) touched [] -> tier 2"
+    },
+    {
+      "section": "S7  Admission: the roster grows, the new member can act",
+      "text": "waiting for chain time 1794997893 (challenge window)"
+    },
+    {
+      "section": "S8  Lapse: a motion nobody votes on forfeits its bond to the commons",
+      "text": "waiting for chain time 1794998126 (voting window)"
+    },
+    {
+      "section": "Whole-run conservation of funds (waits for delayed payouts)",
+      "text": "delayed-payout sweep took 1960 s"
+    }
+  ]
+}

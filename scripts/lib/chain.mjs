@@ -28,6 +28,28 @@ export class LiveChain {
     this.pollMs = pollMs;
     this.retries = Math.ceil((maxWaitSeconds * 1000) / pollMs);
     this.clients = new Map();
+    this.pace = Promise.resolve();
+  }
+
+
+  enqueue(fn) {
+    const run = async () => {
+      for (let attempt = 0; attempt < 6; attempt++) {
+        await sleepMs(2200);
+        try {
+          return await fn();
+        } catch (err) {
+          if (String(err?.message ?? err).includes("Rate limit") && attempt < 5) {
+            await sleepMs(22000);
+            continue;
+          }
+          throw err;
+        }
+      }
+    };
+    const next = this.pace.then(run, run);
+    this.pace = next.catch(() => {});
+    return next;
   }
 
   client(account) {
@@ -43,12 +65,14 @@ export class LiveChain {
 
   /** Plain JSON-RPC: the most predictable path for the few non-contract calls we need. */
   async rpcCall(method, params) {
+    return this.enqueue(async () => {
     const response = await fetch(this.rpc, {
       method: 'POST', headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ jsonrpc: '2.0', id: Date.now(), method, params }) });
     const payload = await response.json();
     if (!response.ok || payload.error) throw new Error(`${method}: ${JSON.stringify(payload.error ?? payload).slice(0, 200)}`);
     return payload.result;
+    });
   }
 
   async fund(address, wei) {
@@ -75,7 +99,7 @@ export class LiveChain {
     const client = this.client(from);
     let hash;
     try {
-      hash = await client.writeContract({ address, functionName: fn, args, value: BigInt(value) });
+      hash = await this.enqueue(() => client.writeContract({ address, functionName: fn, args, value: BigInt(value) }));
     } catch (error) {
       return { ok: false, kind: 'SUBMIT_ERROR', errorText: String(error?.shortMessage ?? error?.message ?? error), hash: null };
     }
@@ -102,7 +126,7 @@ export class LiveChain {
   }
 
   async read(address, fn, args = []) {
-    return this.client().readContract({ address, functionName: fn, args });
+    return this.enqueue(() => this.client().readContract({ address, functionName: fn, args }));
   }
 
   /** Deployed source bytes as a utf8 string (JSON-RPC gen_getContractCode returns base64). */
