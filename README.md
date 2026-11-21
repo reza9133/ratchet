@@ -111,7 +111,7 @@ How it is enforced and how it is proven is written down in [docs/CONSENSUS.md](d
 * a leader error, a malformed answer, a validator exception: all are votes against;
 * no consensus means no state change (**UNDETERMINED**), and the caller may retry;
 * the suite checks all 16 x 16 leader/validator pairs, both adjacent-tier directions, 14 kinds of
-  forgery, and 48 mutants (every tolerance-style mutant is killed).
+  forgery, and 49 mutants (every tolerance-style mutant is killed).
 
 ---
 
@@ -171,16 +171,34 @@ bash run.sh --full         # live run plus the expiry scenario
 | 2 | downloads the **GenVM v0.2.16** artifacts, runs `genvm-lint` (`Lint passed`, `Validation passed`) | 1 min first time |
 | 3 | `npm ci` (`genlayer-js 1.1.8`) and the script unit tests | 30 s |
 | 4 | **190 Direct Mode tests** on the real v0.2.16 SDK | 40 s |
-| 5 | **48 mutants** + the e2e self-check (10 broken contracts the live script must reject) | 3-8 min |
+| 5 | **49 mutants** + the e2e self-check (10 broken contracts the live script must reject) | 3-8 min |
 | 6 | **live end-to-end on Studionet** | 20-60 min (real consensus and real waiting windows) |
 
 Flags of `node scripts/e2e.mjs`: `--sim`, `--chaos` (sim only), `--full`, `--ai-attempts N` (default 2; how often an AI
 transaction may be re-sent after an UNDETERMINED consensus; the failed attempt must have changed nothing),
-`--settle-minutes N`, `--payout-wait-minutes N`, `--contract <file>`.
+`--settle-minutes N`, `--payout-wait-minutes N`, `--payout-credit-seconds N`, `--fund-wait-seconds N`, `--contract <file>`.
 
-Live accounts are throw-away keys generated into `.e2e/keys.json` (git-ignored) and funded with
-the Studionet `sim_fundAccount` RPC (1 GEN each). If funding is refused, the script prints the
-addresses to fund from the faucet and stops. Reports land in `reports/latest.md` and `.json`.
+Live accounts are throw-away keys generated into `.e2e/keys.json` (git-ignored). Each of the seven
+accounts (`F0`-`F4`, `O`, `G`) must hold **0.1 GEN** (`E2E_MIN_GEN` changes that; the peak spend of one run is
+about 0.045 GEN and the bonds come back). Funding:
+
+```bash
+npm run keys                          # create the accounts, show addresses and balances
+npm run keys -- --fund --wait 600     # try sim_fundAccount, then wait up to 10 min for faucet transfers
+```
+
+Studionet often does not offer `sim_fundAccount`. That is not an error: the run (and `keys --fund --wait`) prints the
+addresses that are short, **waits** for you to send GEN from the faucet in GenLayer Studio
+(`--fund-wait-seconds`, default 600) and carries on as soon as the balances arrive. Accounts you already funded can
+be reused with `E2E_KEYS="0xkey0,0xkey1,...,0xkey6"` (role order `F0,F1,F2,F3,F4,O,G`; never written to disk).
+Reports land in `reports/latest.md` and `.json`.
+
+**Studionet's RPC.** It allows 30 requests a minute and now and then answers with an HTML gateway page or
+`"Internal error"`. `scripts/lib/throttle.mjs` wraps `fetch` for the RPC address, so it covers genlayer-js's own
+polling too: calls are spaced at `E2E_RPC_PER_MIN` (default 24), a refused call is repeated after a pause, and a
+*read* that hits a gateway error is repeated with a growing pause. A transaction submission is never repeated after a
+gateway error (it may already have been accepted). Waiting for a receipt resumes after a transient failure instead of
+aborting the run. `E2E_POLL_SECS` (default 15) is how often a pending transaction is looked up.
 
 ### What the live run does
 
@@ -202,8 +220,17 @@ addresses to fund from the faucet and stops. Reports land in `reports/latest.md`
 
 **Delayed payouts.** `emit_transfer` messages execute when the withdrawing transaction is *finalized*, not when it is
 accepted. The ledger is therefore checked immediately (hard), the arrival of the money is awaited per scenario
-(soft, `--payout-wait-minutes`, default 10) and re-checked for **every account at the end** (hard, `--settle-minutes`,
-default 30). If your network finalizes more slowly, raise those two numbers instead of re-running.
+(soft: `--payout-wait-minutes`, default 10, for the finalization, then `--payout-credit-seconds`, default 180, for the
+credit to show) and re-checked for **every account at the end** (hard, `--settle-minutes`, default 10). If your
+network finalizes more slowly, raise those numbers instead of re-running. If a withdraw *finalizes* and the recipient
+is still not credited, the run notes it once and cuts the remaining waits short instead of polling for half an hour.
+
+**Payouts to accounts use an EVM message.** An account lives on the chain layer, not in GenVM. `withdraw` therefore
+pays through `@gl.evm.contract_interface class _Wallet` (an external `EthSend` message, the same way the Lumen
+contract pays its claims). `gl.get_contract_at(addr).emit_transfer(...)` sends a GenVM-contract message instead; on
+Studionet such a withdraw finalized and zeroed the ledger, but the recipient's `eth_getBalance` never moved. A test
+(`test_withdraw_pays_an_account_with_an_evm_message_not_a_genvm_message`) and a mutant (`P-withdraw-genvm-message`)
+pin this down.
 
 **Hard vs soft checks.** An LLM is not under our control, so *what the AI says* is a soft
 expectation (a warning if it differs, e.g. "the strict reading should flag A3"). Everything
@@ -229,7 +256,7 @@ before it ever touches the network.
 | Suite | Count | What |
 |---|---|---|
 | `tests/direct` | 190 | constructor/filing/guards, classification, **consensus strictness**, voting & timing, challenge/ratchet, settlement, money, per-tier thresholds on a 9-member roster, defensive VOID paths, views, 30 randomized walks x 260 steps with 8 invariants after every step (including "a reverted call changes nothing") and a coverage guard |
-| `tests/mutation/run_mutations.py` | 48 mutants | 47 killed, 1 documented equivalent |
+| `tests/mutation/run_mutations.py` | 49 mutants | 48 killed, 1 documented equivalent |
 | `tests/mutation/e2e_selfcheck.py` | 10 | the live script must fail against each broken contract |
 | `scripts/test` | 7 | receipt classification (names/numbers, snake/camel case, errors, undetermined) |
 | e2e `--sim` | 278 checks / 75 txs (281 / 76 with `--chaos`) | the whole live scenario on real contract code |
