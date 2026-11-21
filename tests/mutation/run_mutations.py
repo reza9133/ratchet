@@ -145,6 +145,8 @@ mutant("X-expel-keeps-member", '            del self.members[member]\n', '')
 mutant("X-admit-skips-count", '            self.member_count = u32(int(self.member_count) + 1)\n            return "ENACTED"',
        '            return "ENACTED"')
 mutant("X-grant-keeps-treasury", '            self.treasury = u256(int(self.treasury) - amount)\n', '')
+mutant("P-withdraw-genvm-message", "_Wallet(Address(who)).emit_transfer(value=u256(amount))",
+       "gl.get_contract_at(Address(who)).emit_transfer(value=u256(amount))")   # Studionet never credits an account this way
 
 
 def run_one(args):

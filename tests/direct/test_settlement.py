@@ -174,6 +174,18 @@ def test_donate_rules(world):
     world.check_conservation()
 
 
+def test_withdraw_pays_an_account_with_an_evm_message_not_a_genvm_message(world):
+    """Studionet credits an EOA only for an external (EVM) message (`EthSend`).  A GenVM contract
+    message (`PostMessage`, what gl.get_contract_at(...).emit_transfer sends) finalizes without
+    ever crediting the recipient; the live runs showed exactly that.  Never go back to it."""
+    mid = file_adopt(world)
+    pass_all(world, mid)
+    world.message_kinds.clear()
+    world.call(1, "withdraw")
+    assert world.message_kinds == ["EthSend"], world.message_kinds
+    assert world.outbox[-1] == (world.hex[1], BOND)
+
+
 def test_errored_payout_returns_to_the_commons(world):
     world.call(2, "donate", value=1000)
     world.vm.sender = world.accounts[0]

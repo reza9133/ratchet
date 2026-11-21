@@ -86,6 +86,7 @@ class World:
         self.deferred = []                      # (due_offset, to_hex, wei)
         self.contract_address = None
         self.outbox = []              # (to_hex, wei) emitted transfers that committed
+        self.message_kinds = []       # kind of every emitted message: "EthSend" (EVM, credits an account) or "PostMessage"
         self.balances = {}            # hex -> wei, mirrors vm._balances
         self.clerk = clerk or FakeClerk()
         self.validators = []          # extra FakeClerks, one per validator
@@ -131,11 +132,17 @@ class World:
         return self.vm._balances.get(self.contract_address, 0)
 
     def _hook(self, vm, request):
-        if "PostMessage" in request:
-            msg = request["PostMessage"]
-            to = msg["address"]
-            self._pending.append(("0x" + bytes(to.as_bytes).hex(), int(msg["value"]), msg.get("on")))
-            return {"ok": None}
+        # A payout to an account is an EXTERNAL (EVM) message: `EthSend`.  `PostMessage` is the
+        # GenVM-contract message and is NOT how an EOA is credited on Studionet, so the suite
+        # accepts both shapes but the contract is required to use EthSend (see test_settlement).
+        for kind in ("EthSend", "PostMessage"):
+            if kind in request:
+                msg = request[kind]
+                to = msg["address"]
+                raw = to.as_bytes if hasattr(to, "as_bytes") else bytes(to)
+                self._pending.append(("0x" + bytes(raw).hex(), int(msg["value"]), kind))
+                self.message_kinds.append(kind)
+                return {"ok": None}
         return None
 
     # ------------------------------------------------------------------ #

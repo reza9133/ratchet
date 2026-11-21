@@ -228,6 +228,21 @@ def judge(evidence, mode, other_ids, tiers, floor):
 # --------------------------------------------------------------------------- #
 # Contract
 # --------------------------------------------------------------------------- #
+
+
+@gl.evm.contract_interface
+class _Wallet:
+    """An account (EOA) lives on the chain layer, not in GenVM.  A payout to it must be an
+    EXTERNAL (EVM) message; `gl.get_contract_at(...)` addresses a GenVM contract, and a transfer
+    emitted through it was finalized on Studionet without ever crediting the recipient's balance."""
+
+    class View:
+        pass
+
+    class Write:
+        pass
+
+
 class Ratchet(gl.Contract):
     name: str
     bond: u256
@@ -790,7 +805,7 @@ class Ratchet(gl.Contract):
             raise gl.vm.UserError("nothing to withdraw")
         self.claimable[who] = u256(0)
         self.claimable_total = u256(int(self.claimable_total) - amount)
-        gl.get_contract_at(Address(who)).emit_transfer(value=u256(amount))
+        _Wallet(Address(who)).emit_transfer(value=u256(amount))
 
     @gl.public.write.payable
     def __on_errored_message__(self) -> None:

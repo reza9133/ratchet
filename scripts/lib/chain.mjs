@@ -12,6 +12,7 @@ import { createAccount, createClient, abi } from 'genlayer-js';
 import { studionet } from 'genlayer-js/chains';
 import { TransactionStatus } from 'genlayer-js/types';
 import { classifyReceipt, deployedAddress } from './receipt.mjs';
+import { installThrottle, isTransientError, withTransientRetry } from './throttle.mjs';
 
 const sleepMs = (ms) => new Promise((r) => setTimeout(r, ms));
 const hex = (u8) => Buffer.from(u8).toString('hex');
@@ -22,34 +23,15 @@ function outcomeOf(receipt, hash) {
 }
 
 export class LiveChain {
-  constructor({ rpc = process.env.GENLAYER_RPC || '', pollMs = 4000, maxWaitSeconds = 1500 } = {}) {
+  constructor({ rpc = process.env.GENLAYER_RPC || '', pollMs = Math.max(1, Number(process.env.E2E_POLL_SECS) || 15) * 1000,
+    maxWaitSeconds = 1500, perMinute = Math.max(1, Number(process.env.E2E_RPC_PER_MIN) || 24) } = {}) {
     this.mode = 'live';
     this.rpc = rpc || studionet.rpcUrls?.default?.http?.[0] || 'https://studio.genlayer.com/api';
     this.pollMs = pollMs;
     this.retries = Math.ceil((maxWaitSeconds * 1000) / pollMs);
     this.clients = new Map();
-    this.pace = Promise.resolve();
-  }
-
-
-  enqueue(fn) {
-    const run = async () => {
-      for (let attempt = 0; attempt < 6; attempt++) {
-        await sleepMs(2200);
-        try {
-          return await fn();
-        } catch (err) {
-          if (String(err?.message ?? err).includes("Rate limit") && attempt < 5) {
-            await sleepMs(22000);
-            continue;
-          }
-          throw err;
-        }
-      }
-    };
-    const next = this.pace.then(run, run);
-    this.pace = next.catch(() => {});
-    return next;
+    // Every request to the RPC (ours AND the SDK's own polling) goes through one shared throttle.
+    this.throttle = installThrottle(this.rpc, perMinute);
   }
 
   client(account) {
@@ -63,20 +45,23 @@ export class LiveChain {
     return this.clients.get(key);
   }
 
-  /** Plain JSON-RPC: the most predictable path for the few non-contract calls we need. */
+  /** Plain JSON-RPC (throttled and retried like every other request). */
   async rpcCall(method, params) {
-    return this.enqueue(async () => {
-    const response = await fetch(this.rpc, {
-      method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ jsonrpc: '2.0', id: Date.now(), method, params }) });
-    const payload = await response.json();
-    if (!response.ok || payload.error) throw new Error(`${method}: ${JSON.stringify(payload.error ?? payload).slice(0, 200)}`);
-    return payload.result;
+    return withTransientRetry(async () => {
+      const response = await fetch(this.rpc, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: Date.now(), method, params }) });
+      const text = await response.text();
+      let payload;
+      try { payload = JSON.parse(text); } catch { throw new Error(`${method}: non-JSON answer (${response.status}) ${text.slice(0, 80).replace(/\s+/g, ' ')}`); }
+      if (!response.ok || payload.error) throw new Error(`${method}: ${JSON.stringify(payload.error ?? payload).slice(0, 200)}`);
+      return payload.result;
     });
   }
 
   async fund(address, wei) {
-    // Studionet exposes sim_fundAccount (amount in wei as a JSON number).
+    // Studionet may expose sim_fundAccount (amount in wei as a JSON number); when it does not, the
+    // caller falls back to waiting for the faucet (see lib/funding.mjs).
     await this.rpcCall('sim_fundAccount', [address, Number(wei)]);
     return this.balance(address);
   }
@@ -85,11 +70,24 @@ export class LiveChain {
     return BigInt(await this.rpcCall('eth_getBalance', [address, 'latest']));
   }
 
+  /** Waits for a receipt; a transient RPC failure while polling resumes the wait instead of aborting the run. */
+  async waitReceipt(client, hash, status, maxWaitSeconds) {
+    const deadline = Date.now() + maxWaitSeconds * 1000;
+    for (;;) {
+      const left = Math.max(1, Math.ceil((deadline - Date.now()) / this.pollMs));
+      try {
+        return await client.waitForTransactionReceipt({ hash, status, interval: this.pollMs, retries: left });
+      } catch (error) {
+        if (!isTransientError(error) || Date.now() > deadline) throw error;
+        await sleepMs(Math.min(30000, this.pollMs * 2));
+      }
+    }
+  }
+
   async deploy({ from, code, args }) {
     const client = this.client(from);
     const hash = await client.deployContract({ code, args, leaderOnly: false });
-    const receipt = await client.waitForTransactionReceipt({
-      hash, status: TransactionStatus.ACCEPTED, interval: this.pollMs, retries: this.retries });
+    const receipt = await this.waitReceipt(client, hash, TransactionStatus.ACCEPTED, this.retries * this.pollMs / 1000);
     const out = outcomeOf(receipt, hash);
     out.address = deployedAddress(receipt);
     return out;
@@ -99,13 +97,14 @@ export class LiveChain {
     const client = this.client(from);
     let hash;
     try {
-      hash = await this.enqueue(() => client.writeContract({ address, functionName: fn, args, value: BigInt(value) }));
+      // A submission is never blindly repeated (it may already have been accepted); the throttle only
+      // repeats it when the RPC refused it for rate-limit reasons, which means it was not processed.
+      hash = await client.writeContract({ address, functionName: fn, args, value: BigInt(value) });
     } catch (error) {
       return { ok: false, kind: 'SUBMIT_ERROR', errorText: String(error?.shortMessage ?? error?.message ?? error), hash: null };
     }
     try {
-      const receipt = await client.waitForTransactionReceipt({
-        hash, status: TransactionStatus.ACCEPTED, interval: this.pollMs, retries: this.retries });
+      const receipt = await this.waitReceipt(client, hash, TransactionStatus.ACCEPTED, this.retries * this.pollMs / 1000);
       return outcomeOf(receipt, hash);
     } catch (error) {
       return { ok: false, kind: 'TIMEOUT', errorText: String(error?.message ?? error), hash };
@@ -116,9 +115,7 @@ export class LiveChain {
     if (!outcome?.hash) return outcome;
     const client = this.client();
     try {
-      const receipt = await client.waitForTransactionReceipt({
-        hash: outcome.hash, status: TransactionStatus.FINALIZED, interval: this.pollMs,
-        retries: Math.ceil((maxWaitSeconds * 1000) / this.pollMs) });
+      const receipt = await this.waitReceipt(client, outcome.hash, TransactionStatus.FINALIZED, maxWaitSeconds);
       return outcomeOf(receipt, outcome.hash);
     } catch (error) {
       return { ...outcome, finalized: false, finalizeError: String(error?.message ?? error) };
@@ -126,7 +123,7 @@ export class LiveChain {
   }
 
   async read(address, fn, args = []) {
-    return this.enqueue(() => this.client().readContract({ address, functionName: fn, args }));
+    return withTransientRetry(() => this.client().readContract({ address, functionName: fn, args }));
   }
 
   /** Deployed source bytes as a utf8 string (JSON-RPC gen_getContractCode returns base64). */
