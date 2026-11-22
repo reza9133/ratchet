@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motions · RATCHET</title>
+<meta name="description" content="File, classify, vote, challenge and finalize motions of the Ratchet assembly.">
+<meta name="theme-color" content="#110FFF">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<meta property="og:title" content="Motions · RATCHET"><meta property="og:description" content="File, classify, vote, challenge and finalize motions of the Ratchet assembly."><meta property="og:image" content="./assets/hero-bg.jpg">
+</head>
+<body data-page="motions">
+<div id="splash" aria-hidden="true"></div>
+<header id="site-header"></header>
+<div id="net-banner" role="alert"></div>
+<main>
+<section class="page-hero">
+  <div class="ph-bg"></div><div class="ph-grid"></div>
+  <img class="ph-mochi" src="/src/assets/mochi.webp" alt="" aria-hidden="true">
+  <div class="container ph-in"><span class="eyebrow light">The floor</span><h1>Motions</h1><p class="lead">Browse every motion, follow its lifecycle, and take part: classify, vote, challenge, finalize. Or file a new one with a bond.</p></div>
+</section>
+<section class="section tight"><div class="container">
+  <div id="mo-list-view">
+    <div class="toolbar"><div class="muted" id="mo-floor">Loading…</div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" id="mo-refresh">Refresh</button><button class="btn btn-primary btn-sm" id="mo-file">＋ File a motion</button></div></div>
+    <div id="mo-list"><div class="inline-load"><span class="spin-orbit"><i></i></span>Reading motions…</div></div>
+    <div class="center" style="margin-top:20px"><button class="btn btn-ghost" id="mo-more" hidden>Load older motions</button></div>
+  </div>
+  <div id="mo-detail-view" hidden></div>
+</div></section>
+</main>
+<footer id="site-footer"></footer>
+<div id="overlay-root"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

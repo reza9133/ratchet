@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Charter · RATCHET</title>
+<meta name="description" content="The living charter of the Ratchet assembly and the tier ladder that protects it.">
+<meta name="theme-color" content="#110FFF">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<meta property="og:title" content="Charter · RATCHET"><meta property="og:description" content="The living charter of the Ratchet assembly and the tier ladder that protects it."><meta property="og:image" content="./assets/hero-bg.jpg">
+</head>
+<body data-page="charter">
+<div id="splash" aria-hidden="true"></div>
+<header id="site-header"></header>
+<div id="net-banner" role="alert"></div>
+<main>
+<section class="page-hero">
+  <div class="ph-bg"></div><div class="ph-grid"></div>
+  <img class="ph-mochi" src="/src/assets/mochi.webp" alt="" aria-hidden="true">
+  <div class="container ph-in"><span class="eyebrow light">The charter</span><h1>Articles, tiers and thresholds</h1><p class="lead">The charter is a list of articles. Each carries a tier. The more entrenched the article, the bigger the supermajority needed to touch it.</p></div>
+</section>
+<section class="section tight"><div class="container charter-grid">
+  <div><div class="toolbar"><div class="muted" id="ch-version">Loading…</div><button class="btn btn-ghost btn-sm" id="ch-refresh">Refresh</button></div><div id="ch-list"><div class="inline-load"><span class="spin-orbit"><i></i></span>Reading the charter…</div></div></div>
+  <aside><div class="card tower-card"><h3 style="text-align:center">The tier tower</h3><div class="tower-scene"><div class="tower" id="tower"></div></div><p class="muted center" style="font-size:.85rem;margin:0">Hover a plate. Higher plates need bigger majorities.</p></div>
+  <div class="card" style="margin-top:20px"><h3>Votes needed</h3><div class="field"><label for="ch-roster">Roster size <b id="ch-roster-n">5</b></label><input id="ch-roster" type="range" min="3" max="15" value="5"></div><div id="ch-needs"></div></div></aside>
+</div>
+<div class="container" style="margin-top:42px"><div class="sec-head"><span class="eyebrow">Floors</span><h2>Where each motion starts</h2></div><div class="table-wrap"><table>
+<thead><tr><th>Kind</th><th>Effect when enacted</th><th>Floor tier</th></tr></thead><tbody>
+<tr><td><b>AMEND</b></td><td>Adopt a new article, replace one, or repeal one</td><td>The <b>current tier of the edited article</b> (a new article: 1)</td></tr>
+<tr><td><b>GRANT</b></td><td>Pay commons funds to an address</td><td>By size: ≤ 10% of the treasury → 1, ≤ 50% → 2, more → 3</td></tr>
+<tr><td><b>ADMIT</b></td><td>Add a member (max 15)</td><td>2</td></tr>
+<tr><td><b>EXPEL</b></td><td>Remove a member (never below 3)</td><td>3</td></tr></tbody></table></div>
+<p class="muted" style="margin-top:14px;font-size:.9rem">The effective tier is <code>max(floor, tier of every article the validators say is touched)</code>. It is computed in code, never by the LLM.</p></div></section>
+</main>
+<footer id="site-footer"></footer>
+<div id="overlay-root"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "ratchet-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "RATCHET: multi-page dApp frontend for the GenLayer Studionet contract",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.1.0",
+    "@fontsource-variable/jetbrains-mono": "^5.1.0",
+    "@fontsource-variable/space-grotesk": "^5.1.0",
+    "genlayer-js": "1.1.8",
+    "three": "0.169.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RATCHET — a self-tightening constitution on GenLayer</title>
+<meta name="description" content="RATCHET is a self-governing assembly on GenLayer: motions need supermajorities that depend on how entrenched the touched articles are, judged by AI validators who must agree exactly.">
+<meta name="theme-color" content="#110FFF">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<meta property="og:title" content="RATCHET — a self-tightening constitution on GenLayer"><meta property="og:description" content="RATCHET is a self-governing assembly on GenLayer: motions need supermajorities that depend on how entrenched the touched articles are, judged by AI validators who must agree exactly."><meta property="og:image" content="./assets/hero-bg.jpg">
+</head>
+<body data-page="home">
+<div id="splash" aria-hidden="true"></div>
+<header id="site-header"></header>
+<div id="net-banner" role="alert"></div>
+
+<main>
+<section class="hero" data-parallax>
+  <div class="hero-bg" data-depth="12"></div><div class="hero-shade"></div><div class="hero-grid"></div>
+  <div class="container hero-in">
+    <div class="hero-copy">
+      <span class="chip glass reveal"><span class="dot"></span> Live on GenLayer Studionet</span>
+      <h1 class="reveal" style="--d:.08s">A constitution<br>that <span class="grad-light">only tightens.</span></h1>
+      <p class="lead reveal" style="--d:.16s">RATCHET is a small assembly that governs itself through a written charter of tiered articles. Every motion needs a supermajority that grows with how entrenched the articles it touches are, and GenLayer’s AI validators must agree <b>exactly</b> on what “touches” means.</p>
+      <div class="hero-cta reveal" style="--d:.24s">
+        <a class="btn btn-primary btn-lg" href="assembly.html">Open the Assembly <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-glass btn-lg" href="#demo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Watch the demo</a>
+        <a class="btn btn-glass btn-lg" href="docs.html">Read the docs</a>
+      </div>
+      <div class="hero-stats reveal" style="--d:.32s" id="hero-stats">
+        <div class="hs"><b id="hs-members" class="skeleton">00</b><span>Members</span></div>
+        <div class="hs"><b id="hs-treasury" class="skeleton">0.000</b><span>Treasury · GEN</span></div>
+        <div class="hs"><b id="hs-motions" class="skeleton">00</b><span>Motions filed</span></div>
+        <div class="hs"><b id="hs-charter" class="skeleton">v0</b><span>Charter version</span></div>
+      </div>
+    </div>
+    <div class="hero-float" aria-hidden="true">
+      <div class="fchip c1" data-depth="26"><span class="tier-badge" data-tier="3">TIER 3</span><b>ENTRENCHED</b><small>needs 4 of 5 votes</small></div>
+      <div class="fchip c2" data-depth="38"><span class="ok-ic">✓</span><b>Bounty paid</b><small>challenge raised the tier</small></div>
+      <div class="fchip c3" data-depth="18"><b>5 / 5</b><small>validators agree exactly</small></div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#how" aria-label="Scroll"><span></span></a>
+</section>
+
+<section class="section" id="how">
+  <div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">How a motion travels</span><h2>Five clicks of the wheel</h2>
+      <p class="lead">One motion is on the floor at a time. It is filed with a bond, classified by AI validators, voted on, can be challenged once, then settled by plain code.</p></div>
+    <div class="steps">
+      <article class="step card hover tilt reveal"><div class="ic">📜</div><span class="num">01</span><h3>File</h3><p>A member files an amendment, grant, admission or expulsion and attaches <b>exactly the bond</b>. The charter, roster and treasury are frozen into the motion.</p></article>
+      <article class="step card hover tilt reveal" style="--d:.07s"><div class="ic">🧠</div><span class="num">02</span><h3>Classify</h3><p>Validators answer one yes/no question per article: <i>would this motion touch it?</i> They must match <b>exactly</b>. The tier is computed in code.</p></article>
+      <article class="step card hover tilt reveal" style="--d:.14s"><div class="ic">🗳️</div><span class="num">03</span><h3>Vote</h3><p>The tier sets the threshold: majority, two thirds, four fifths or unanimity of the frozen roster. A passing count never ends voting early.</p></article>
+      <article class="step card hover tilt reveal" style="--d:.21s"><div class="ic">⚖️</div><span class="num">04</span><h3>Challenge</h3><p>Think the first reading was too lenient? Post a bond. An inclusive re-read can <b>raise the tier, never lower it</b> and pays you a bounty.</p></article>
+      <article class="step card hover tilt reveal" style="--d:.28s"><div class="ic">🏛️</div><span class="num">05</span><h3>Enact</h3><p>Anyone can finalize. The effect applies, bonds return, payouts become pull balances. No owner, no admin, no upgrade path.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section dark-band" id="ratchet">
+  <div class="container ratchet-grid">
+    <div>
+      <div class="sec-head" style="margin-bottom:22px"><span class="eyebrow light">Feel the ratchet</span><h2 style="color:#fff">Tiers go up. Never down.</h2>
+        <p class="lead" style="color:#b8bde6">Turn the wheel to harden a motion’s tier. Then try to turn it back: the pawl will not let you. That is the whole idea of the contract.</p></div>
+      <div class="tier-ladder" id="tier-ladder"></div>
+      <div class="ratchet-ctl">
+        <button class="btn btn-primary" id="rt-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-7 6 7"/></svg> Ratchet up</button>
+        <button class="btn btn-glass" id="rt-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9l-6 7-6-7"/></svg> Try to turn back</button>
+        <button class="btn btn-glass btn-sm" id="rt-reset">Reset</button>
+      </div>
+      <p class="rt-msg" id="rt-msg" aria-live="polite">Tier 1 · ORDINARY: a strict majority is enough.</p>
+      <div class="roster-calc"><label for="roster">Roster size <b id="roster-n">5</b></label><input id="roster" type="range" min="3" max="15" value="5"><div class="need-row" id="need-row"></div></div>
+    </div>
+    <div class="gear-stage reveal" id="gear-stage"><div class="gear-fallback" id="gear-fallback"></div><canvas id="gear-canvas" aria-label="3D ratchet wheel"></canvas><div class="stage-tag">3D · drag to look around</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head center reveal"><span class="eyebrow">Why it is built this way</span><h2>Small rules, strictly enforced</h2></div>
+    <div class="pillars">
+      <article class="card hover tilt reveal"><h3>🎯 Exact-equality AI consensus</h3><p>Booleans, tiers, thresholds: every decision-bearing value must be <b>identical</b> between leader and validators. No tolerance band. Only the free-text reason may differ.</p></article>
+      <article class="card hover tilt reveal" style="--d:.06s"><h3>🔒 A one-way ratchet</h3><p>A challenge can only <b>add</b> touched articles. Entrenchment grows, it never loosens, and weakening an entrenched article needs that article’s own supermajority.</p></article>
+      <article class="card hover tilt reveal" style="--d:.12s"><h3>💰 Bonds with teeth</h3><p>Bonds are escrowed. A successful challenger wins their bond back plus half of the proposer’s. A motion nobody votes on forfeits its bond to the commons.</p></article>
+      <article class="card hover tilt reveal" style="--d:.18s"><h3>🧾 Pull payments</h3><p>Payouts credit a balance; people <code>withdraw()</code> themselves, so a failing recipient can never block the assembly. Bounced transfers return to the treasury.</p></article>
+      <article class="card hover tilt reveal" style="--d:.24s"><h3>🧩 No admin, no oracle</h3><p>One contract file. No owner, no upgrade path, no off-chain authority. Parameters are fixed at deployment and the charter changes only through motions.</p></article>
+      <article class="card hover tilt reveal" style="--d:.30s"><h3>📊 A conservation ledger</h3><p><code>get_ledger</code> proves the contract balance covers treasury + escrow + claimable at all times. Tested with 190 tests and 49 mutants.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demo">
+  <div class="container">
+    <div class="sec-head center reveal"><span class="eyebrow">Demo video</span><h2>See a motion get ratcheted</h2>
+      <p class="lead">A 2½-minute walk-through: connect a wallet, switch network, file a motion, watch the validators classify it, vote, then challenge it and see the tier tighten.</p></div>
+    <div class="demo-grid">
+      <div class="video-shell reveal" id="video-shell">
+        <video id="demo-video" preload="metadata" playsinline poster="./media/demo-poster.jpg"><source src="./media/demo.mp4" type="video/mp4"><source src="./media/demo.webm" type="video/webm"></video>
+        <button class="play-big" id="play-big" aria-label="Play demo video"><span class="pb-ring"></span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="vid-badge">Simulated data · real UI</div>
+      </div>
+      <ol class="chapters reveal" id="chapters" style="--d:.1s"></ol>
+    </div>
+    <p class="muted center" style="margin-top:18px;font-size:.88rem">The recording uses the site’s built-in simulation mode (<a href="assembly.html?demo=1">try it yourself</a>) so nothing costs gas. The live pages talk to the deployed contract.</p>
+  </div>
+</section>
+
+<section class="section mochi-sec">
+  <div class="container mochi-grid">
+    <div class="mochi-wrap reveal" data-parallax><div class="mochi-glow"></div><img class="mochi-img" data-depth="16" src="/src/assets/mochi.webp" alt="Mochi, the Ratchet mascot" width="420"><div class="bubble" id="bubble">Hi, I’m <b>Mochi</b>! I’m the clerk who keeps the wheel honest.</div></div>
+    <div class="reveal" style="--d:.1s"><span class="eyebrow">Meet Mochi</span><h2>The clerk who never loosens the ratchet</h2>
+      <p class="lead">Mochi is the GenLayer cat who watches every motion. Click the bubble for a tip, or open the docs to learn how tiers, bonds and challenges fit together.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px"><button class="btn btn-ghost" id="next-tip">Another tip 🐾</button><a class="btn btn-primary" href="docs.html">Read the docs</a></div></div>
+  </div>
+</section>
+
+<section class="section" id="latest" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head reveal" style="display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;max-width:none"><div><span class="eyebrow">On the floor</span><h2 style="margin:0">Latest motions</h2></div><a class="btn btn-ghost" href="motions.html">All motions →</a></div>
+    <div class="motion-cards" id="latest-motions"><div class="inline-load" style="grid-column:1/-1"><span class="spin-orbit"><i></i></span>Reading the chain…</div></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-in reveal"><div><h2 style="color:#fff;margin-bottom:8px">Join the assembly</h2><p style="color:#c8cdf5;margin:0">Connect your wallet on Studionet, file a motion, or challenge one that looks too lenient.</p></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-lg" style="background:#fff;color:var(--cobalt)" href="motions.html">Browse motions</a><a class="btn btn-glass btn-lg" href="https://github.com/reza9133/ratchet" target="_blank" rel="noopener">GitHub ↗</a><a class="btn btn-glass btn-lg" href="https://x.com/amirhp771" target="_blank" rel="noopener">@amirhp771 ↗</a></div></div>
+</section>
+</main>
+
+<footer id="site-footer"></footer>
+<div id="overlay-root"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
